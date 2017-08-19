@@ -22,6 +22,7 @@ gem "will_paginate", "3.1.5"
 gem "figaro"
 gem "jquery-validation-rails"
 gem "toastr-rails"
+gem 'wdm', '>= 0.1.0'
 
 group :development, :test do
   gem "sqlite3"

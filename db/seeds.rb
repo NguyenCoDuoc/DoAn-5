@@ -1,4 +1,4 @@
-User.create! name: "Admin", email: "admin@gmail.com",
+User.create! name: "Nguyen Co Duoc", email: "coduoc250202@gmail.com",
   password: "123456", password_confirmation: "123456", is_admin: true,
     activated: true, activated_at: Time.zone.now
 
