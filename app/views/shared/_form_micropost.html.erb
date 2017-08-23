@@ -1,10 +1,28 @@
 <%= form_for @micropost do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: t(".compose_new_micropost") %>
-  </div>
-  <%= f.submit t(".post"), class: "btn btn-primary btn_new_micropost" %>
-  <span class="picture">
-    <%= f.file_field :picture, accept: Settings.micropost.accept_for_style_image %>
-  </span>
+			<div class="share">
+				<div class="arrow"></div>
+				<div class="panel panel-default" style="border:none; ">
+                      <div class="panel-heading"><i class="fa fa-file"></i> Update Status</div>
+                      <div class="panel-body">
+                        <div >
+                         <%= f.text_area :content, placeholder: "What's on your mind ?", style: "height: 62px; border:none; overflow: hidden;",  class: "form-control message"%>
+						</div>
+                      </div>
+						<div class="panel-footer">
+								<label class="btn btn-default btn-sm center-block btn-file">
+								  <i class="fa fa-download" aria-hidden="true"></i>
+								  Brower
+								   	<%= f.file_field :picture, accept: Settings.micropost.accept_for_style_image, style: "display:none; width: 100%;" %>
+								</label>	
+								<select name="privacy" class="form-control privacy-dropdown pull-left input-sm">
+										<option value="1" selected="selected">Public</option>
+										<option value="2">Only my friends</option>
+										<option value="3">Only me</option>
+								</select>             
+								<%= f.submit "Post", class: "btn btn-primary", style: "width:100px;" %>
+						</div>
+                    </div>
+			</div>
+			</div>
 <% end %>

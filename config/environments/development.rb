@@ -17,9 +17,20 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smpt
+  config.action_mailer.smpt_settings = {
+    address: "smpt.gmail.com",
+    port: 587,
+    domain: "example.com",
+    authentication: :plain,
+    enable_starttls_auto:true,
+    user_name: "EMAIL ADDRESS",
+    password: "EMAIL PASSWORD",
+    openssl_verify_mode: 'none'
+
+  }
 
   host = "localhost:3000"
 

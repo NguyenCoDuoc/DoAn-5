@@ -23,6 +23,9 @@ gem "figaro"
 gem "jquery-validation-rails"
 gem "toastr-rails"
 gem 'wdm', '>= 0.1.0'
+gem 'pg_search'
+gem 'jquery-ui-rails'
+gem 'coffee-script-source', '1.8.0'
 
 group :development, :test do
   gem "sqlite3"

@@ -1,8 +1,25 @@
-<header class="navbar navbar-fixed-top navbar-inverse" >
-  <div class="container col-md-12">
-    <%= link_to "Connect UTEHY", root_path, id: "logo" %>
-    <nav class = "nav nav_center ">
-      <ul class="nav navbar-nav navbar-right nav-stacked ">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background: #3b5998">
+  <div class="container col-md-12" >
+    <%= link_to "UTEHY", root_path, id: "logo" %>
+    <% if logged_in? %>
+          <%= form_tag(users_path, :method => "get", id: "search-form", class: "navbar-form pull-left") do %>
+          <div class="input-group" style="min-width: 550px;margin-left: 30px; ">
+          <%= text_field_tag :search, params[:search], placeholder: "Search ...", class: "form-control" %>
+          <div class="input-group-btn">
+          <%= submit_tag "Search", :name => nil, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          </div>
+        </div>
+    <% end %>
+    <% end %>
+    <nav class = "nav nav_center">
+      <ul class="nav navbar-nav navbar-right nav-stacked" >
+        <% if logged_in? %>
+        <li>
+           <%= link_to "#{@current_user.name}", current_user %>
+        </li>
+        <% end %>
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".help"), help_path %></li>
         <% if logged_in? %>

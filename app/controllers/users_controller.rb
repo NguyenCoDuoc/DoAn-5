@@ -4,9 +4,22 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   before_action :load_user, except: [:index, :new, :create]
 
+  
+
   def index
-    @users = User.select(:id, :name, :email, :created_at).order(created_at: :desc)
+       @users = User.select(:id, :name, :email, :created_at).order(created_at: :desc)
       .paginate page: params[:page], per_page: Settings.user.users_per_page
+
+     
+
+      if params[:term]
+        @users = User.search_by_full_name(params[:term])
+      else
+        @users = User.all
+      end
+
+      @current_user = User.find_by id: params[:id]
+      return @current_user
   end
 
   def new
@@ -16,11 +29,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      @user.send_activation_email
+      # flash[:success] = "Please check your email address for activate your account."
+      flash[:success]= "Welcome to UTEHY"
       render json: {status: :success, redirect_to: root_url}
     else
-      render json: {status: :error, errors: @user.errors.messages}
+      render 'new'
     end
   end
 

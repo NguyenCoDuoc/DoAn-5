@@ -1,0 +1,47 @@
+.scrollable-menu {
+  height: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+}
+
+li.search-item {
+  height: 75px;
+  margin: 10px;
+  &:hover {
+    background-color: #ecf0f1;
+    cursor:pointer;
+  }
+  a:link {
+   color:inherit;
+  }
+}
+
+#livesearch {
+  a {
+    color: #66757f;
+  }
+}
+
+.search-form {
+  display: table;
+  width: 500px;
+  background-color: #fff;
+  padding: 0;
+  .form-group {
+    display: table-cell;
+    width: 100%;
+    .form-control {
+      width: 100%;
+    }
+  }
+    button {
+      display: table-cell;
+      width: 70px;
+    }
+}
+
+.dropdown-menu {
+  padding: 0;
+  border: none;
+  width: 100%;
+}
