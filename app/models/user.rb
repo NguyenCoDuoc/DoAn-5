@@ -59,15 +59,6 @@ class User < ApplicationRecord
     update_attributes remember_digest: nil
   end
 
-  def activate
-    update_attribute(:activated, true)
-    update_attribute(:activated_at, Time.zone.now)
-  end
-
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
-
   def create_reset_digest
     self.reset_token = User.new_token
     update_attributes reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now
@@ -97,8 +88,32 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  
+  def self.search(search)
+    if search
+      where('name LIKE ? OR email LIKE ?', "%#{search}%","%#{search}%")
+    else
+      all
+    end
+  end
 
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+  
+  def self.from_omniauth(auth_hash)
+    user = find_or_create_by(uid: auth_hash['uid'], prodiver: auth_hash['provider'])
+    user.name = auth_hash['info']['first_name']
+    user.email = auth_hash['info']['email']
+    user.password = '123456'
+
+    user.save!
+    user
+  end
   private
 
   def email_downcase
@@ -109,13 +124,6 @@ class User < ApplicationRecord
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
-  
-  def self.search(search)
-        if search
-            find(:all, conditions:['name ILIKE ?', "%#{search}%"])
-        else
-            find(:all)
-        end
-  end
+ 
 end
 

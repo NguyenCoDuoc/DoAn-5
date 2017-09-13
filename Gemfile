@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem 'rails_admin'
 gem "bcrypt", "3.1.11"
 gem "carrierwave", "1.1.0"
 gem "config", "~> 1.0"
@@ -26,6 +27,10 @@ gem 'wdm', '>= 0.1.0'
 gem 'pg_search'
 gem 'jquery-ui-rails'
 gem 'coffee-script-source', '1.8.0'
+
+gem 'omniauth'
+gem 'omniauth-facebook' # Facebook authentication
+
 
 group :development, :test do
   gem "sqlite3"

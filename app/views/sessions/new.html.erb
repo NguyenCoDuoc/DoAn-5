@@ -21,5 +21,6 @@
     <% end %>
 
     <p><%= t ".new_user" %><%= link_to t(".sign_up_now"), signup_path %></p>
+    <%= link_to "Sign in with facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %>
   </div>
 </div>

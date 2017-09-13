@@ -6,7 +6,7 @@
           <div class="input-group" style="min-width: 550px;margin-left: 30px; ">
           <%= text_field_tag :search, params[:search], placeholder: "Search ...", class: "form-control" %>
           <div class="input-group-btn">
-          <%= submit_tag "Search", :name => nil, class: "btn btn-default" do %>
+          <%= submit_tag "", :name => nil, class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-search"></span>
           <% end %>
           </div>
@@ -22,6 +22,13 @@
         <% end %>
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".help"), help_path %></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t ".ngon_ngu" %><b class="caret"></b></a>
+          <ul class="dropdown-menu">  
+            <li><%= link_to_unless I18n.locale == :en, "English", locale: :en %></li>
+            <li><%= link_to_unless I18n.locale == :vi, "Tiếng Việt", locale: :vi %></li>
+          </ul>
+        </li>
         <% if logged_in? %>
           <li><%= link_to t(".users"), users_path %></li>
           <li class="dropdown">

@@ -7,16 +7,8 @@ class UsersController < ApplicationController
   
 
   def index
-       @users = User.select(:id, :name, :email, :created_at).order(created_at: :desc)
+       @users = User.search(params[:search]).order(created_at: :desc)
       .paginate page: params[:page], per_page: Settings.user.users_per_page
-
-     
-
-      if params[:term]
-        @users = User.search_by_full_name(params[:term])
-      else
-        @users = User.all
-      end
 
       @current_user = User.find_by id: params[:id]
       return @current_user
@@ -30,9 +22,9 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       @user.send_activation_email
-      # flash[:success] = "Please check your email address for activate your account."
-      flash[:success]= "Welcome to UTEHY"
-      render json: {status: :success, redirect_to: root_url}
+      message = "Please check your email address for activate your account."
+      flash[:warning]=message
+      redirect_to root_url  
     else
       render 'new'
     end

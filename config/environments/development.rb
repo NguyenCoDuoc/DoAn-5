@@ -19,22 +19,18 @@ Rails.application.configure do
   end
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.delivery_method = :smpt
-  config.action_mailer.smpt_settings = {
-    address: "smpt.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: :plain,
-    enable_starttls_auto:true,
-    user_name: "EMAIL ADDRESS",
-    password: "EMAIL PASSWORD",
-    openssl_verify_mode: 'none'
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  user_name:            '<gmail username>',
+  password:             '<gmail password>',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 
-  }
+  host = "127.0.0.1.3000"
 
-  host = "localhost:3000"
-
-  config.action_mailer.default_url_options = {host: host, protocol: "http"}
+  config.action_mailer.default_url_options = {host: host}
 
   config.action_mailer.perform_caching = false
 

@@ -15,6 +15,7 @@ en:
       title: "Connenct Student UTEHY"
 
     header:
+      ngon_ngu: "Language"
       account: "Account "
       help: "Help"
       home: "Home"
