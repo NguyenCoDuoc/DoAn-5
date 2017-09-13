@@ -1,63 +1,32 @@
-<% if logged_in? %>
-  <aside class="col-md-2">
-    <%= link_to gravatar_for(current_user, size: Settings.micropost.size_for_gravatar),
-        current_user %>
-    <h1><%= current_user.name %></h1>
-    <span><%= link_to t(".view_my_profile"), current_user %></span>
-    <span><%= pluralize current_user.microposts.count, "Microposts" %></span>
-    <% @user ||= current_user %>
-    <div class="stats">
-      <a href="<%= following_user_path(@user) %>">
-        <strong id="following" class="stat">
-          <%= @user.following.count %>
-        </strong>
-        following
-      </a>
-      <a href="<%= followers_user_path(@user) %>">
-        <strong id="followers" class="stat">
-          <%= @user.followers.count %>
-        </strong>
-        followers
-      </a>
-    </div>
-  </aside>
 
+<% if logged_in? %>
+
+  <!-- hồ sơ nhỏ (small profile) -->
+  <%= render "shared/small-profile" %>
+
+  <!-- quảng cáo (advertisement)-->
+  <%= render "shared/advertisement" %>
+   
   <div class="row user_and_micropots col-md-offset-2">
-    <aside class="col-md-9">
-      <!-- <section class="user_info">
-        <%= render "shared/user_info" %>
-      </section> -->
-      <!-- <section class="stats">
-        <%= render 'shared/stats' %>
-      </section> -->
-      <section class="form_micropost">
-        <%= render "shared/form_micropost" %>
-      </section>
-    </aside>
+     <%= render "shared/form_micropost" %>
   </div>
+
   <div class="container">
-   <aside class="col-md-2">
-   <marquee direction="down" width="150" height="170" behavior="alternate" style="border:solid blue">
-    <marquee behavior="alternate">
-      Save me !
-    </marquee>
-  </marquee>
-  </aside>
-  <div class="row micropost_feed col-md-offset-2">
-    <aside class="col-md-9">
-      <h3><%= t ".micropost_feed" %></h3>
-      <%= render "shared/feed" %>
-    </aside>
+    <div class="row micropost_feed col-md-offset-2">
+      <aside class="col-md-12">
+        <h3><%= t ".micropost_feed" %></h3>
+        <%= render "shared/feed" %>
+      </aside>
+    </div>
   </div>
-  </div>
+
 <% else %>
   <div class="row center jumbotron col-md-8  ">
     <h1><%= t ".welcome" %></h1>
-    <!-- render "shared/bootstrap-slider" -->
+   <!-- < render "shared/bootstrap-slider" %>  -->
     <h2>
       <%= t ".this_is_the_home" %>
       <%= link_to "Hung Yen University of Technology and Education", "http://www.utehy.edu.vn/" %>
-    
     </h2>
 
   </div>

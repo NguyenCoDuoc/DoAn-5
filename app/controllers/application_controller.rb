@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  before_action :set_i18n_locale
+
+   protect_from_forgery with: :exception
+
 
   private
 
@@ -10,4 +14,18 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t ".please_log_in"
     redirect_to login_url
   end
+  def set_i18n_locale 
+        if params[:locale] 
+            if I18n.available_locales.include?(params[:locale].to_sym)
+                I18n.locale = params[:locale] 
+            else
+                flash.now[:notice] = params[:locale] + ' is not supported'              
+            end
+        end
+    end
+  
+    def default_url_options 
+        { :locale => I18n.locale }
+    end
+    
 end

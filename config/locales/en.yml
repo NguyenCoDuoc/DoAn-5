@@ -16,14 +16,16 @@ en:
 
     header:
       account: "Account "
+      connect: "Connect"
       help: "Help"
       home: "Home"
       log_in: "Log in"
       log_out: "Log out"
+      ngon_ngu: "Language"
       profile: "Profile"
-      connect: "Connect"
       settings: "Settings"
       users: "Users"
+      search: "Search ..."
 
     footer:
       about: "About"
@@ -42,9 +44,17 @@ en:
       compose_new_micropost: "Compose new micropost..."
       maximum_file_size_is_5MB: "Maximum file size is 5MB. Please choose a smaller file."
       post: "Post"
+      update_status: " Update Status"
+      what_on_your_mind: "What's on your mind ?"
+      public: "Public"
+      only_me: "Only My friends"
+      only_my: "Only me"
     user_info:
       micropost: "micropost"
       view_my_profile: "view my profile"
+    small-profile:
+      microposts: "Microposts"
+      all_users: "All User"
 
   microposts:
     create:
@@ -122,6 +132,11 @@ en:
       sign_up: "Sign up now!"
       this_is_the_home: "This is the home page for the"
       welcome: "Welcome to Connect App"
+      microposts: "Microposts"
+      view_my_profile: "View my profile"
+      update_avatar: "Update avatar"
+      followers: "Followers"
+      following: "Following"
 
   user_mailer:
     account_activation:
@@ -180,6 +195,7 @@ en:
     show:
       microposts: "Microposts "
       note: "Couldn't find User with 'id'= "
+      timeline: "Time Line"
 
     update:
       profile_updated: "Profile updated"

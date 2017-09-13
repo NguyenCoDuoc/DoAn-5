@@ -7,16 +7,8 @@ class UsersController < ApplicationController
   
 
   def index
-       @users = User.select(:id, :name, :email, :created_at).order(created_at: :desc)
+       @users = User.search(params[:search]).order(created_at: :desc)
       .paginate page: params[:page], per_page: Settings.user.users_per_page
-
-     
-
-      if params[:term]
-        @users = User.search_by_full_name(params[:term])
-      else
-        @users = User.all
-      end
 
       @current_user = User.find_by id: params[:id]
       return @current_user
@@ -29,9 +21,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      @user.send_activation_email
-      # flash[:success] = "Please check your email address for activate your account."
-      flash[:success]= "Welcome to UTEHY"
+      log_in @user
+      # @user.send_activation_email
+      # message = "Please check your email address for activate your account."
+      # flash[:warning]=message
+      flash[:success] = "Welcome To The Connect Students UTEHY! "
       render json: {status: :success, redirect_to: root_url}
     else
       render 'new'
@@ -83,7 +77,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit :name, :email, :password, :password_confirmation
+    params.require(:user).permit :name, :email, :date_of_birth,:is_female,:avatar, :password, :password_confirmation
   end
 
   def correct_user

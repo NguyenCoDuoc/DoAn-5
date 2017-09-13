@@ -1,20 +1,41 @@
 <% provide :title, @user.name %>
-<div class="row" >
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
+<div class="row">
+  <div class="col-md-12"> 
+        <%= image_tag("welcometomylife.png") %>
+        <div class="middle">
+          <%= gravatar_for @user%>
+          <div class="text">  <%= @user.name %></div>
+        </div>
+  </div>
+ 
+  <aside class="col-md-3">
     <section class="stats">
       <%= render 'shared/stats' %>
+
     </section>
+    <p>
+
+      <i class="fa fa-users" aria-hidden="true"></i>
+      <%= link_to t(".all_user"), users_path,:class => 'home_links'%>
+    </p>
+    <p>
+      <i class="fa fa-file-image-o" aria-hidden="true"></i>
+      <%= link_to t(".update_avatar"), "https://vi.gravatar.com/emails/",:class => 'home_links' %>
+  </p>
+  <p>
+        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+      <%= current_user.date_of_birth %>
+    </p>
+    <b>Email :</b> <%= @user.email %>
+    
+
   </aside>
-  <div class="col-md-8">
-    <%= render 'form_follow' if logged_in? %>
+  <div class="col-md-6" style="width: 590px;">
+    <div class="form-group">
+    <%= render 'form_follow' if logged_in? %> 
+    </div>   
     <% if @user.microposts.any? %>
-      <h3><%= t ".microposts" %>(<%= @user.microposts.count %>)</h3>
+      <h3><%= t ".timeline" %>(<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
          <%= render partial: "microposts/micropost", collection: @microposts %>
       </ol>
@@ -22,3 +43,35 @@
     <% end %>
   </div>
 </div>
+<style>
+
+
+
+.middle {
+  transition: .5s ease;
+  opacity: 1;
+  position: absolute;
+  top: 81%;
+  left: 15%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+
+  
+}
+.middle img{
+  border-radius: 8px;
+  height: 100px;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  padding-top: 65px;
+ 
+}
+.purple {
+  background-color: #9b59b6;
+  box-shadow: 0px 5px 0px 0px #82409D;
+}
+</style>

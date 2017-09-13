@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  attr_accessor :remember_digestoken, :activation_token, :reset_token
+  has_many :conversations, :foreign_key => :sender_id
+  
+  attr_accessor :remember_token, :remember_digestoken, :activation_token, :reset_token
 
   before_save :email_downcase
   before_create :create_activation_digest
@@ -22,17 +24,22 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.username.maximum}
   validates :password, presence: true, length: {minimum: Settings.password.minimum},
     allow_nil: true
+    
 
   has_secure_password
 
-  include PgSearch
+  include PgSearch #tim kiem
   pg_search_scope :search_by_full_name, against: [:name]
+
+  #  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/fb_profile_cover_13173327520f7.png"
+  # # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  # do_not_validate_attachment_file_type :image
 
   def is_user? user
     self == user
   end
 
-  class << self
+ class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
@@ -57,15 +64,6 @@ class User < ApplicationRecord
 
   def forget
     update_attributes remember_digest: nil
-  end
-
-  def activate
-    update_attribute(:activated, true)
-    update_attribute(:activated_at, Time.zone.now)
-  end
-
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
   end
 
   def create_reset_digest
@@ -97,8 +95,32 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  
+  def self.search(search)
+    if search
+      where('name LIKE ? OR email LIKE ?', "%#{search}%","%#{search}%")
+    else
+      all
+    end
+  end
 
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+  
+  def self.from_omniauth(auth_hash)
+    user = find_or_create_by(uid: auth_hash['uid'], prodiver: auth_hash['provider'])
+    user.name = auth_hash['info']['first_name']
+    user.email = auth_hash['info']['email']
+    user.password = '123456'
+
+    user.save!
+    user
+  end
   private
 
   def email_downcase
@@ -109,13 +131,6 @@ class User < ApplicationRecord
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
-  
-  def self.search(search)
-        if search
-            find(:all, conditions:['name ILIKE ?', "%#{search}%"])
-        else
-            find(:all)
-        end
-  end
+ 
 end
 
