@@ -2,13 +2,21 @@
 <%= link_to gravatar_for(comment.user, size: Settings.micropost.size_for_gravatar),
   comment.user %>
   <%= link_to comment.user.name, comment.user, class: "user_commented" %>
+  <span style="float:right;">
+    <div class="dropdown">
+      <p class="dropbtn"><b>...</b></p>
+      <div class="dropdown-content">
+         <% if logged_in? %>
+          <% if current_user.is_user? comment.user  %>
+            <%= link_to t(".delete"), [comment.micropost, comment],
+              method: :delete, :remote => true,class: "delete_comment",data: {confirm: "You sure?"} %>
+               <%= link_to "Edit", "#" %>
+          <% end %>
+        <% end %>
+       
+      </div>
+    </div>
+  </span>
   <span class="content_commented"><%= comment.content %></span>
-  <span class="time_of_comment"> | <%= time_ago_in_words comment.created_at %> | </span>
-
-  <% if logged_in? %>
-    <% if current_user.is_user? comment.user  %>
-      <%= link_to "Delete", [comment.micropost, comment],
-      method: :delete, :remote => true, class: "delete_comment",data: {confirm: "You sure?"} %>
-    <% end %>
-  <% end %>
+  <span class="time_of_comment">| <%= time_ago_in_words comment.created_at %> |</span>
 </div>

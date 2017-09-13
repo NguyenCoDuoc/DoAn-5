@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   root "static_pages#home"
   get "/help", to: "static_pages#help"
   get "/about", to: "static_pages#about"
@@ -9,14 +11,21 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/activation", to:"accountactivation#edit"
 
-  get "search(/:search)", to: "searches#index", as: :search
-  resources :users
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure', :to => 'sessions#failure'
 
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
+  get "search(/:search)", to: "searches#index", as: :search
+
+   scope '(:locale)' do
+        resources :users
+        resources :users do
+          member do
+            get :following, :followers
+          end
+        end
+        root "static_pages#home"
+   end
+  
   resources :password_resets
   resources :microposts do
     resources :comments

@@ -1,28 +1,68 @@
 <%= form_for @micropost do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-			<div class="share">
+   <aside class="col-md-12 section-post">
+      <section class="form_micropost">
+       <div class="share">
 				<div class="arrow"></div>
 				<div class="panel panel-default" style="border:none; ">
-                      <div class="panel-heading"><i class="fa fa-file"></i> Update Status</div>
+                      <div class="panel-heading"><i class="fa fa-bars" aria-hidden="true"></i><%= t ".update_status" %></div>
                       <div class="panel-body">
                         <div >
-                         <%= f.text_area :content, placeholder: "What's on your mind ?", style: "height: 62px; border:none; overflow: hidden;",  class: "form-control message"%>
+                         <%= f.text_area :content, placeholder: t(".what_on_your_mind"), style: "height: 62px; border:none; overflow: hidden;",  class: "form-control message"%>
 						</div>
                       </div>
 						<div class="panel-footer">
-								<label class="btn btn-default btn-sm center-block btn-file">
-								  <i class="fa fa-download" aria-hidden="true"></i>
-								  Brower
-								   	<%= f.file_field :picture, accept: Settings.micropost.accept_for_style_image, style: "display:none; width: 100%;" %>
+							<div class="row">
+								<div class="col-md-3">
+									<label class="btn btn-default btn-sm center-block btn-file">
+										<i class="fa fa-picture-o" aria-hidden="true"></i>
+
+								  Image/Video
+								   	<%= f.file_field :picture, accept: Settings.micropost.accept_for_style_image,
+								   	  style: "display:none; ", class: "filestyle" %>
 								</label>	
-								<select name="privacy" class="form-control privacy-dropdown pull-left input-sm">
-										<option value="1" selected="selected">Public</option>
-										<option value="2">Only my friends</option>
-										<option value="3">Only me</option>
-								</select>             
-								<%= f.submit "Post", class: "btn btn-primary", style: "width:100px;" %>
+								</div>
+								<div class="col-md-5">
+									
+								</div>
+								<div class="col-md-4">
+									<select name="privacy" class="form-control privacy-dropdown pull-left input-sm">	
+										<option value="1" selected="selected"><%= t ".public" %></option>
+										<option value="2"><%= t ".only_my" %></option>
+										<option value="3"><%= t ".only_me" %></option>
+									</select>    
+								</div>
+								
+							</div>     
+								<div class="row">
+									<div class="col-4">
+										
+									</div>
+									<div class="col-4">
+										<%= f.submit t(".post"), class: "btn btn-primary", style: "width:100px; margin-right:45px; float:right; border-radius:30px;" %>
+									</div>
+								</div>
 						</div>
-                    </div>
+                 </div>
 			</div>
 			</div>
+      </section>
+   </aside>
+    <script type="text/javascript">
+    	$(function(){
+    		$('.section-post').click(function(){
+    			$('.show-fade').removeClass('hidden');
+    			$('.user_and_micropots').css({
+    				'position':'fixed',
+    				'width':'48%',
+    				'margin-left':'192px',
+    				'z-index':1029,
+    			},200);
+    		});
+    		$('.show-fade').click(function(){
+    			$('.show-fade').addClass('hidden');
+    			$('.user_and_micropots').removeAttr('style');
+    		})
+    	});
+    </script>
 <% end %>
