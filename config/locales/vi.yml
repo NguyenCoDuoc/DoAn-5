@@ -35,6 +35,7 @@ vi:
       new: "Tin tức"
       title: ""
       the: ""
+      copyright: "Bản quyền "
 
   shared:
     error_messages:

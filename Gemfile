@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
-gem 'rails_admin'
+
+gem "rails_admin", "~> 1.2"
+gem "devise"
 gem "bcrypt", "3.1.11"
 gem "carrierwave", "1.1.0"
 gem "config", "~> 1.0"
@@ -22,7 +24,6 @@ gem "rails", "~> 5.1.1"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem "will_paginate", "3.1.5"
 gem "figaro"
 gem "jquery-validation-rails"
 gem "toastr-rails"
