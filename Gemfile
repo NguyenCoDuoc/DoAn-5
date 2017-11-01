@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails_admin'
+gem "rails_admin", "~> 1.2"
 gem "bcrypt", "3.1.11"
 gem "carrierwave", "1.1.0"
 gem "config", "~> 1.0"

@@ -55,6 +55,8 @@ en:
     small-profile:
       microposts: "Microposts"
       all_users: "All User"
+    language:
+      ngon_ngu: "Language :"
 
   microposts:
     create:

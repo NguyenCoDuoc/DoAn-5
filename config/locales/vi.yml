@@ -58,6 +58,8 @@ vi:
       view_my_profile: "Xem hồ sơ"
       followers: "Followers"
       following: "Following"
+    language:
+      ngon_ngu: "Ngôn ngữ :"
 
   microposts:
     create:
