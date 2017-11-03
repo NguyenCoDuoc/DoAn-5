@@ -13,11 +13,33 @@
       <%= f.label :email, t(".email") %>
       <%= f.email_field :email, class: "form-control" %>
 
-      <%= f.label :password, t(".password") %>
+      
+    <div class="form-group"> 
+        <%= f.label :is_female, "Gender", class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-3">
+           Female <%= f.radio_button :is_female, true %> 
+        </div>
+        <div class="col-sm-3">
+           Male <%= f.radio_button :is_female, false %> 
+        </div>
+    </div>
+    
+      <%= f.date_select :date_of_birth, {order: [ :day,:month, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>
+    
+      <%= f.label :password, t(".password") %><i>(leave blank if you don't want to change it)</i>
       <%= f.password_field :password, class: "form-control" %>
 
-      <%= f.label :password_confirmation, t(".confimation") %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <%= f.label :password_confirmation, t(".confimation") %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+       
+       <div class="form-group">
+          <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+          <div class="col-sm-6">
+              <%= f.file_field :avatar %>
+          </div>
+       </div>
+
+    
 
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>

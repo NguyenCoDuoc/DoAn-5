@@ -3,7 +3,11 @@
   <%= f.text_field :content , placeholder: "Write comments... ", class: "text_comment" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
 </p>
+<hr>
 <p>
-  <%= f.submit "Create comment", class: "btn btn-primary btn_comment" %>
+  <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+  <%= button_tag(type: "submit", class: "w3-button w3-theme-d2 w3-margin-bottom") do %>
+   <i class="fa fa-comment"></i> Comment 
+  <% end %>
 </p>
 <% end %>

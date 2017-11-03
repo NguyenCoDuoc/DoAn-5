@@ -1,5 +1,9 @@
 User.create! name: "Nguyen Co Duoc", email: "coduoc250201@gmail.com",
+<<<<<<< HEAD
   password: "123456", password_confirmation: "123456", is_admin: true,
+=======
+  password: "123456", password_confirmation: "123456", is_admin: true, date_of_birth: "25/02/1996" , is_female: true,
+>>>>>>> doan5
     activated: true, activated_at: Time.zone.now
 
 99.times do |n|

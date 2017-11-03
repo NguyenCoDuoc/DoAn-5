@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by email: params[:session][:email].downcase
-
+    user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+<<<<<<< HEAD
      if user
         log_in user
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)
@@ -26,12 +26,19 @@ class SessionsController < ApplicationController
         flash[:warning] = "There was am error while trying to authentiace you..."
       end
       redirect_to root_path
+=======
+      log_in user
+      redirect_to root_url
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
+>>>>>>> doan5
     end
   end
 
   def destroy
     log_out
-    redirect_to root_path
+    redirect_to root_url
   end
 end
 

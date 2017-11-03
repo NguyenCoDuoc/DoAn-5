@@ -1,11 +1,18 @@
 source "https://rubygems.org"
 
+<<<<<<< HEAD
 gem 'rails_admin'
+=======
+gem "rails_admin", "~> 1.2"
+>>>>>>> doan5
 gem "bcrypt", "3.1.11"
 gem "carrierwave", "1.1.0"
 gem "config", "~> 1.0"
+# bootstrap
 gem "bootstrap-sass", "3.3.7"
 gem "bootstrap-will_paginate", "1.0.0"
+# font
+gem "font-awesome-sass"
 gem "coffee-rails", "~> 4.2"
 gem "faker", "1.7.3"
 gem "fog", "1.40.0"
@@ -31,6 +38,10 @@ gem 'coffee-script-source', '1.8.0'
 gem 'omniauth'
 gem 'omniauth-facebook' # Facebook authentication
 
+<<<<<<< HEAD
+=======
+gem 'paperclip', '~> 4.1' #add avatar
+>>>>>>> doan5
 
 group :development, :test do
   gem "sqlite3"

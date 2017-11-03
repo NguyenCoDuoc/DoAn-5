@@ -1,25 +1,48 @@
-<header class="navbar navbar-fixed-top navbar-inverse" style="background: #3b5998">
+<style type="text/css">
+  .nav_center li:hover {
+  background-color: #6666ff;
+  }
+  .nav_center a {
+    color: #FFFFFF;
+  }
+</style>
+<header class="navbar navbar-fixed-top navbar-inverse" style="background: #3b5998;">
   <div class="container col-md-12" >
     <%= link_to "UTEHY", root_path, id: "logo" %>
     <% if logged_in? %>
           <%= form_tag(users_path, :method => "get", id: "search-form", class: "navbar-form pull-left") do %>
+<<<<<<< HEAD
           <div class="input-group" style="min-width: 550px;margin-left: 30px; ">
           <%= text_field_tag :search, params[:search], placeholder: "Search ...", class: "form-control" %>
           <div class="input-group-btn">
           <%= submit_tag "", :name => nil, class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-search"></span>
+=======
+
+            <div class="input-group" style="width: 391px;" >
+              <%= text_field_tag :search, params[:search], placeholder: t(".search"), class: "form-control" %>
+              <div class="input-group-btn">
+              <%= submit_tag "", :name => nil, class: "btn btn-default" do %>
+             <span class="input-group-addon input-group-addon-plus"><i class="fa fa-search" aria-hidden="true"></i></span>
+             <% end %>
+              </div>
+            </div>
+>>>>>>> doan5
           <% end %>
-          </div>
-        </div>
-    <% end %>
     <% end %>
     <nav class = "nav nav_center">
-      <ul class="nav navbar-nav navbar-right nav-stacked" >
+      <ul class="nav navbar-nav navbar-right nav-stacked" style="margin-right:200px;">
         <% if logged_in? %>
-        <li>
-           <%= link_to "#{@current_user.name}", current_user %>
-        </li>
+         <li class="round-image-50"><%= gravatar_for(current_user) %></li>
+         <li>
+           <%= link_to "#{@current_user.name}", current_user,{:style=>'color:#FFFFFF;', :class => "css_class"} %>
+        </li>         <% end %>
+        <li><%= link_to t(".home"), root_path,{:style=>'color:#FFFFFF;', :class => "css_class"} %></li>
+        <% if logged_in? %>
+        <li class="round-image-51" style="margin-top: 15px;"><span> <%= image_tag("message.png", :alt => "rss feed") %></span></li>
+        <li class="round-image-51" style="margin-top: 14px;"><%= image_tag("thongbao.png", :alt => "rss feed") %></li>
         <% end %>
+<<<<<<< HEAD
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".help"), help_path %></li>
         <li class="dropdown">
@@ -29,10 +52,13 @@
             <li><%= link_to_unless I18n.locale == :vi, "Tiếng Việt", locale: :vi %></li>
           </ul>
         </li>
+=======
+        <!-- <li><%= link_to t(".help"), help_path %></li> -->
+        
+>>>>>>> doan5
         <% if logged_in? %>
-          <li><%= link_to t(".users"), users_path %></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF">
               <%= t ".account" %><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">

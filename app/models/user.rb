@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  attr_accessor :remember_digestoken, :activation_token, :reset_token
+  has_many :conversations, :foreign_key => :sender_id
+  
+  attr_accessor :remember_token, :remember_digestoken, :activation_token, :reset_token
 
   before_save :email_downcase
   before_create :create_activation_digest
@@ -22,17 +24,22 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.username.maximum}
   validates :password, presence: true, length: {minimum: Settings.password.minimum},
     allow_nil: true
+    
 
   has_secure_password
 
-  include PgSearch
+  include PgSearch #tim kiem
   pg_search_scope :search_by_full_name, against: [:name]
+
+  #  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/fb_profile_cover_13173327520f7.png"
+  # # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  # do_not_validate_attachment_file_type :image
 
   def is_user? user
     self == user
   end
 
-  class << self
+ class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost

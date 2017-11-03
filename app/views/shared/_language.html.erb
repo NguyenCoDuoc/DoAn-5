@@ -1,0 +1,5 @@
+<aside class="col-md-3" style="position: fixed; margin-top:210px; margin-left: 850px; float: right; background: #fff; border-radius: 5px; min-height: 50px; text-align: center; padding-top: 15px;">
+   <span style="color: blue;"><%= t(".ngon_ngu")%></span> 
+           <%= link_to_unless I18n.locale == :en, "English", locale: :en %>,
+          <%= link_to_unless I18n.locale == :vi, "Tiếng Việt", locale: :vi %>
+ </aside>

@@ -24,12 +24,21 @@ vi:
       profile: "Hồ sơ"
       connect: "Kết nối"
       settings: "Cài đặt"
+<<<<<<< HEAD
       users: "Bạn bè"
+=======
+      users: "Người dùng"
+      search: "Tìm kiếm ..."
+>>>>>>> doan5
 
     footer:
       about: "Thông tin"
       author: "Nguyễn Cố Được"
+<<<<<<< HEAD
       by: "Bản quyền"
+=======
+      by: "Bản quyền "
+>>>>>>> doan5
       contact: ""
       new: "Tin tức"
       title: ""
@@ -40,12 +49,34 @@ vi:
       error: "Lỗi"
       the_form_contains: "The form contains "
     form_micropost:
+<<<<<<< HEAD
       compose_new_micropost: "Compose new micropost..."
       maximum_file_size_is_5MB: "Maximum file size is 5MB. Please choose a smaller file."
       post: "Post"
     user_info:
       micropost: "micropost"
       view_my_profile: "xem hồ sơ"
+=======
+      compose_new_micropost: "Viết trạng thái mới..."
+      maximum_file_size_is_5MB: "Kích thước tệp tối đa là 5MB. Vui lòng chọn một tệp nhỏ hơn."
+      post: "Đăng bài"
+      update_status: " Cập nhập trạng thái"
+      what_on_your_mind: "Bạn đang nghĩ gì ...  "
+      public: "Công cộng"
+      only_my: "Bạn bè"
+      only_me: "Riêng tư"
+    user_info:
+      micropost: "micropost"
+      view_my_profile: "xem hồ sơ"
+    small-profile:
+      microposts: "Bài viết"
+      update_avatar: "Ảnh đại diện"
+      view_my_profile: "Xem hồ sơ"
+      followers: "Followers"
+      following: "Following"
+    language:
+      ngon_ngu: "Ngôn ngữ :"
+>>>>>>> doan5
 
   microposts:
     create:
@@ -54,10 +85,20 @@ vi:
       error: "Micropost delete failed "
       micropost_deleted: "Micropost deleted"
     micropost:
+<<<<<<< HEAD
       ago: " ago."
       delete: "Delete"
       posted: "Posted "
       you_sure: "You sure?"
+=======
+      ago: " trước đó."
+      delete: "Xóa"
+      posted: "Đã đăng"
+      you_sure: "Bạn chắc chứ?"
+  comments:
+    comment:
+      delete: "Xóa"
+>>>>>>> doan5
 
   sessions:
     create:
@@ -117,12 +158,24 @@ vi:
       to_get_help: "To get help on this sample app, see the"
 
     home:
+<<<<<<< HEAD
       micropost_feed: "Micropost Feed"
+=======
+      micropost_feed: "Bài viết mới"
+>>>>>>> doan5
       ruby_on_rails: "Ruby on Rails Tutorial"
       connect_application: "Kết nối ứng dụng."
       sign_up: "Đăng kí ngay!"
       this_is_the_home: "Đây là trang chính"
       welcome: "Chào mừng đến với UTEHY"
+<<<<<<< HEAD
+=======
+      microposts: "Bài viết"
+      view_my_profile: "Xem hồ sở cá nhân"
+      update_avatar: "Cập nhập ảnh đại diện"
+      followers: "Theo dõi"
+      following: "Dõi theo"
+>>>>>>> doan5
 
   user_mailer:
     account_activation:
@@ -181,6 +234,10 @@ vi:
     show:
       microposts: "Bài viết"
       note: "Couldn't find User with 'id'= "
+<<<<<<< HEAD
+=======
+      timeline: "Dòng thời gian"
+>>>>>>> doan5
 
     update:
       profile_updated: "Profile updated"

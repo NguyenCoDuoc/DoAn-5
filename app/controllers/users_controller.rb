@@ -21,10 +21,19 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+<<<<<<< HEAD
       @user.send_activation_email
       message = "Please check your email address for activate your account."
       flash[:warning]=message
       redirect_to root_url  
+=======
+      log_in @user
+      # @user.send_activation_email
+      # message = "Please check your email address for activate your account."
+      # flash[:warning]=message
+      flash[:success] = "Welcome To The Connect Students UTEHY! "
+      render json: {status: :success, redirect_to: root_url}
+>>>>>>> doan5
     else
       render 'new'
     end
@@ -75,7 +84,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit :name, :email, :password, :password_confirmation
+    params.require(:user).permit :name, :email, :date_of_birth,:is_female,:avatar, :password, :password_confirmation
   end
 
   def correct_user
