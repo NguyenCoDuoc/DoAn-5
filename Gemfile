@@ -1,10 +1,16 @@
 source "https://rubygems.org"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 gem 'rails_admin'
 =======
 gem "rails_admin", "~> 1.2"
 >>>>>>> doan5
+=======
+
+gem "rails_admin", "~> 1.2"
+gem "devise"
+>>>>>>> 82d07ccd3c7cf7cbcf49bf1bd0e4231380f20ac7
 gem "bcrypt", "3.1.11"
 gem "carrierwave", "1.1.0"
 gem "config", "~> 1.0"
@@ -26,7 +32,6 @@ gem "rails", "~> 5.1.1"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem "will_paginate", "3.1.5"
 gem "figaro"
 gem "jquery-validation-rails"
 gem "toastr-rails"

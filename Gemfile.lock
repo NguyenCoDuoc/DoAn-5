@@ -82,6 +82,12 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
     deep_merge (1.1.1)
+    devise (4.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.2)
+      responders
+      warden (~> 1.2.3)
     erubi (1.6.1)
     excon (0.59.0)
     execjs (2.7.0)
@@ -319,7 +325,11 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+    orm_adapter (0.5.0)
+>>>>>>> 82d07ccd3c7cf7cbcf49bf1bd0e4231380f20ac7
     paperclip (4.3.7)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -392,6 +402,9 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     remotipart (1.3.1)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.1)
@@ -438,6 +451,8 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.7)
+      rack (>= 1.0)
     wdm (0.1.1)
     web-console (3.5.1)
       actionview (>= 5.0)
@@ -466,6 +481,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
   config (~> 1.0)
+  devise
   faker (= 1.7.3)
   figaro
   fog (= 1.40.0)
@@ -490,10 +506,14 @@ DEPENDENCIES
   rails (~> 5.1.1)
   rails_12factor (= 0.0.2)
 <<<<<<< HEAD
+<<<<<<< HEAD
   rails_admin
 =======
   rails_admin (~> 1.2)
 >>>>>>> doan5
+=======
+  rails_admin (~> 1.2)
+>>>>>>> 82d07ccd3c7cf7cbcf49bf1bd0e4231380f20ac7
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -505,7 +525,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   wdm (>= 0.1.0)
   web-console (>= 3.3.0)
-  will_paginate (= 3.1.5)
 
 BUNDLED WITH
    1.15.1

@@ -36,6 +36,7 @@ en:
       new: "News"
       title: "Ruby on Rails Tutorial"
       the: "The "
+      copyright: "Coppyright"
 
   shared:
     error_messages:
