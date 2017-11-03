@@ -29,13 +29,13 @@ en:
 
     footer:
       about: "About"
-      author: "Michael Hartl"
+      author: " Duoc Nguyen Co"
       by: "by "
       contact: "Contact"
       new: "News"
       title: "Ruby on Rails Tutorial"
       the: "The "
-      copyright: "Coppyright"
+      copyright: "Coppyright "
 
   shared:
     error_messages:

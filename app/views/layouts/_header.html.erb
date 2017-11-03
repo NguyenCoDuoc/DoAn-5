@@ -23,7 +23,7 @@
           <% end %>
     <% end %>
     <nav class = "nav nav_center">
-      <ul class="nav navbar-nav navbar-right nav-stacked" style="margin-right:200px;">
+      <ul class="nav navbar-nav navbar-right nav-stacked" style="margin-right:200px; padding-right: 200px;" >
         <% if logged_in? %>
          <li class="round-image-50"><%= gravatar_for(current_user) %></li>
         <!-- <li>
@@ -36,17 +36,17 @@
         <li class="round-image-51" style="margin-top: 14px;"><%= image_tag("thongbao.png", :alt => "rss feed") %></li>
         <% end %>
         <!-- <li><%= link_to t(".help"), help_path %></li> -->
-        <li class="dropdown">
+       <!--  <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF"><%= t ".ngon_ngu" %><b class="caret"></b></a>
           <ul class="dropdown-menu">  
             <li><%= link_to_unless I18n.locale == :en, "English", locale: :en %></li>
             <li><%= link_to_unless I18n.locale == :vi, "Tiếng Việt", locale: :vi %></li>
           </ul>
-        </li>
+        </li> -->
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF">
-              <%= t ".account" %><b class="caret"></b>
+             <!--  <%= t ".account" %> --> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to t(".profile"), current_user %></li>
