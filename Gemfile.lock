@@ -480,7 +480,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.1)
   rails_12factor (= 0.0.2)
-  rails_admin
+  rails_admin (~> 1.2)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
